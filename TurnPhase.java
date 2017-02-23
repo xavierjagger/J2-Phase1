@@ -131,4 +131,14 @@ public class TurnPhase {
 		showHP();
 		selectCommand();
 	}
+
+	//Opponent Attack Phase
+	public void OpponentPhase(){
+		nODMGOutput = opponent.getAttack() - player.getDefense();
+		System.out.println("You have received " + nODMGOutput + " damage.");
+		nHPReduced = player.getHP() - nODMGOutput;
+		nHPReduced = player.getHP();
+		showHP();
+		selectCommand();
+	}
 }
