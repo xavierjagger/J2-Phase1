@@ -6,7 +6,7 @@ public class TurnPhase {
 
 	//Initialize
 	Scanner sc = new Scanner(System.in);
-	private int nTurn, nResume, nDMGOutput, nHPReduced, nODMGOutput, nOHPReduced;
+	private int nTurn, nSkipTurn, nResume, nDMGOutput, nHPReduced, nODMGOutput, nOHPReduced;
 	private Armor armor;
 	private Environment environment;
 	private MenuPhase menu;
@@ -47,8 +47,13 @@ public class TurnPhase {
 		System.out.println("2. Defend");
 		System.out.println("3. Charge");
 		System.out.println("");
-        int nTurn = sc.nextInt();
-       
+        nTurn = sc.nextInt();
+        if(nSkipTurn == 1)
+    		System.out.println("Whatchu gonna do??");
+    		System.out.println("1. Attack");
+    		System.out.println("2. Defend");
+    		System.out.println("");
+            nTurn = sc.nextInt();
         if(nTurn == 1){
         	System.out.println("You have chosen to Attack");
         	nTurn = sc.nextInt();
@@ -62,6 +67,7 @@ public class TurnPhase {
         else if(nTurn == 3){
         	System.out.println("You have chosen to Charge");
         	nTurn = sc.nextInt();
+        	nSkipTurn = 1;
         	charge();
         }
         
