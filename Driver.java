@@ -3,15 +3,18 @@ package java2phase1;
 public class Driver {
 
 	public static void main(String[] args) {
-	
-		Arena arena = new Arena();
-		Swamp swamp = new Swamp();
-		Colosseum colosseum = new Colosseum();
-		Environment environment = new Environment(arena, swamp, colosseum);
+
 		MenuPhase menu = new MenuPhase();
+		TurnPhase turn = new TurnPhase();
 		
 		menu.showMainMenu();
-		environment.checkEnvironment();
+		menu.chooseArmor();
+		menu.chooseWeapon();
+		menu.chooseOpponent();
+		menu.checkEnvironment();
+		menu.beginBattle();
+		turn.battlePhase();
+		turn.selectCommand();
 	}//endpsvm
 	
 }//end
