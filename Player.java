@@ -2,6 +2,8 @@ package java2phase1;
 
 import java.util.*;
 public class Player {
+	
+	//Initialize
 	private int nHP, nAttack, nDefense, nSpeed;
 	
 	public Player(int nHP, int nAttack, int nDefense, int nSpeed){
@@ -11,6 +13,7 @@ public class Player {
 		this.nSpeed = nSpeed;
 	}
 	
+	//Getters and Setters
 	public int getHP() {
 		return nHP;
 	}

@@ -1,6 +1,8 @@
 package java2phase1;
 
 public class Opponent {
+	
+	//Initialize
 	private String sOpponent;
 	private int nHP, nAttack, nDefense, nSpeed;
 	
@@ -12,6 +14,7 @@ public class Opponent {
 		this.nSpeed = nSpeed;
 	}
 	
+	//Getters and Setters
 	public String getsOpponent() {
 		return sOpponent;
 	}

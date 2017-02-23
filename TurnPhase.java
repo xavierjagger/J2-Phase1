@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class TurnPhase {
 
+	//Initialize
 	Scanner sc = new Scanner(System.in);
-	private int nTurn, nDMGOutput, nHPReduced, nODMGOutput, nOHPReduced;
+	private int nTurn, nResume, nDMGOutput, nHPReduced, nODMGOutput, nOHPReduced;
 	private Armor armor;
 	private Environment environment;
 	private MenuPhase menu;
@@ -13,6 +14,7 @@ public class TurnPhase {
 	private Player player;
 	private Weapon weapon;
 	
+	//Battle Phase (Damage Calculations and Pre-Battle Conditions)
 	public void battlePhase(){
 		while(player.getHP() == 100 && opponent.getHP() > 0){
 			environment.getPlayerPenalty();
@@ -32,17 +34,18 @@ public class TurnPhase {
 		}
 	}
 	
+	//Show Character and Opponent HP
 	public void showHP(){
 		System.out.println("Warrior: " + player.getHP() + " HP");
 		System.out.println("Opponent: " + opponent.getHP() + " HP");
 	}
 	
+	//Main Battle Phase
 	public void selectCommand(){
-		
 		System.out.println("Whatchu gonna do??");
-		System.out.println("1 - Attack");
-		System.out.println("2 - Defend");
-		System.out.println("3 - Charge");
+		System.out.println("1. Attack");
+		System.out.println("2. Defend");
+		System.out.println("3. Charge");
 		System.out.println("");
         int nTurn = sc.nextInt();
        
@@ -61,8 +64,35 @@ public class TurnPhase {
         	nTurn = sc.nextInt();
         	charge();
         }
+        
+        if(player.getHP() >= 0 && opponent.getHP() <= 0){
+        	System.out.println("You are victorious!");
+        	System.out.println("Do you wanna play again?");
+        	System.out.println("1. Yes");
+        	System.out.println("2. No");
+        	nResume = sc.nextInt();
+        	if(nResume == 1)
+        		menu.showMainMenu();
+        	else if(nResume == 2)
+        		System.exit(0);
+        	else
+        		selectCommand();
+        }
+        
+        else if(player.getHP() >= 0 && opponent.getHP() <= 0){
+        	System.out.println("You have been defeated!");
+        	System.out.println("Do you wanna play again?");
+        	System.out.println("1. Yes");
+        	System.out.println("2. No");
+        	nResume = sc.nextInt();
+        	if(nResume == 1)
+        		menu.showMainMenu();
+        	else if(nResume == 2)
+        		System.exit(0);
+       	}
 	}
 	
+	//Action selection output
 	public void attack(){
 		nDMGOutput = player.getAttack() - opponent.getDefense();
 		System.out.println("You have done " + nDMGOutput + " damage.");

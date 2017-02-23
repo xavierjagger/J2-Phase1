@@ -1,6 +1,8 @@
 package java2phase1;
 
 public class Armor {
+
+	//Initialize
 	private String sType;
     private int nDefense, nSpeedPenalty;
 
@@ -10,6 +12,7 @@ public class Armor {
         this.nSpeedPenalty = nSpeedPenalty;
     }
     
+    //Getters and Setters
     public String getType() {
         return sType;
     }

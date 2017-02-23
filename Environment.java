@@ -1,9 +1,8 @@
 package java2phase1;
 
-import java.util.Scanner;
-
 public class Environment {
 	
+	//Initialize
 	private String sEnvironment;
 	private int nPlayerPenalty, nOpponentPenalty;
 	

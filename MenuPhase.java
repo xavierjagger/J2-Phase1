@@ -3,9 +3,9 @@ package java2phase1;
 import java.util.Scanner;
 public class MenuPhase {
 
+	//Initialize
 	Scanner sc = new Scanner(System.in);
 	private int nChoice, nUserChoice, nSelectArmor, nSelectWeapon, nSelectOpponent;
-	
 	private Armor armor;
 	private Environment environment;
 	private Opponent opponent;
@@ -13,10 +13,11 @@ public class MenuPhase {
 	private TurnPhase turn;
 	private Weapon weapon;
 	
+	//Main Menu object
 	public void showMainMenu(){
 		System.out.println("Here comes Bruno Batumbakal!!");
 		System.out.println("Do you wish to help Bruno save the world?");
-		System.out.println("1. Play");
+		System.out.println("1. Play Game");
 		System.out.println("2. Exit");
 		nUserChoice = sc.nextInt();
 		
@@ -29,12 +30,14 @@ public class MenuPhase {
 			showMainMenu();
 	}//setMainMenu
 	
+	//Armor Selection
 	public void chooseArmor(){
 		System.out.println("Please select your armor: ");
 		System.out.println("1. Light Armor - +15 DEF, -5 SPD");
 		System.out.println("2. Medium Armor - +25 DEF, -15 SPD");
 		System.out.println("3. Heavy Armor - +35 DEF, -25 SPD");
 		nSelectArmor = sc.nextInt();
+		chooseWeapon();
 	
 		if(nSelectArmor == 1)
 			armor = new Armor("Light", 15, -5);
@@ -47,12 +50,14 @@ public class MenuPhase {
 			chooseArmor();
 	}
 	
+	//Weapon Selection
 	public void chooseWeapon(){
 		System.out.println("Please select your weapon: ");
 		System.out.println("1. Dagger - +20 ATK");
 		System.out.println("2. Sword - +30 ATK, -10 SPD");
 		System.out.println("3. Battle Axe - +40 ATK, -20 SPD");
 		nSelectWeapon = sc.nextInt();
+		chooseOpponent();
 		
 		if(nSelectWeapon == 1)
 			weapon = new Weapon("Dagger", 20, 0);
@@ -65,12 +70,14 @@ public class MenuPhase {
 			chooseWeapon();
 	}
 	
+	//Opponent Selection
 	public void chooseOpponent(){
 			System.out.println("Please select your opponent: ");
 			System.out.println("1. Thief");
 			System.out.println("2. Viking");
 			System.out.println("3. Minotaur");
 			nSelectOpponent = sc.nextInt();
+			chooseEnvironment();
 			
 			if(nSelectOpponent == 1)
 				opponent = new Opponent("Thief", 150, 20, 10, 40);
@@ -83,13 +90,14 @@ public class MenuPhase {
 				chooseOpponent();
 	}
 	
-	//Get user choice for Environment
-	public void checkEnvironment(){
+	//Environment Selection
+	public void chooseEnvironment(){
 		System.out.println("Please choose your environment:");
 		System.out.println("1. Arena");
 		System.out.println("2. Swamp");
 		System.out.println("3. Colosseum");
 		nChoice = sc.nextInt();
+		beginBattle();
 		
 		if(nChoice == 1)
 			environment = new Environment("Arena", 0, 0);
@@ -99,9 +107,10 @@ public class MenuPhase {
 			environment = new Environment("Colosseum", 2, 2);
 		else
 			System.out.println("Invalid Command.");
-			checkEnvironment();
+			chooseEnvironment();
 	}
-		
+	
+	//Pre-Battle Phase
 	public void beginBattle(){
 		int nTotalDMG = player.getAttack() + weapon.getAttack(),
 		nTotalDEF = player.getDefense() + armor.getDefense(),
