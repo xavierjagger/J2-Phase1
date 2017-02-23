@@ -1,6 +1,8 @@
 package java2phase1;
 
 public class Weapon {
+	
+	//Initialize
 	private String sType;
 	private int nAttack, nSpeedPenalty;
 	
@@ -10,6 +12,7 @@ public class Weapon {
 		this.nSpeedPenalty = nSpeedPenalty;
 	}
 	
+	//Getters and Setters
 	public String getType() {
 		return sType;
 	}
